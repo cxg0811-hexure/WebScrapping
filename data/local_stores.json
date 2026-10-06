@@ -1,15 +1,17 @@
 {
- "generated_at": "2026-10-06T15:51:59",
+ "generated_at": "2026-10-06T16:02:06",
  "stores": {
   "Reliance Digital": {
    "count": 104,
    "errors": [],
-   "scraped_at": "2026-10-06T15:51:59"
+   "scraped_at": "2026-10-06T16:02:06"
   },
   "Amazon.in": {
-   "count": 71,
-   "errors": [],
-   "scraped_at": "2026-10-06T15:51:59"
+   "count": 69,
+   "errors": [
+    "Failed to fetch https://www.amazon.in/s?k=apple+iphone&page=2"
+   ],
+   "scraped_at": "2026-10-06T16:02:06"
   }
  },
  "products": [
@@ -27,7 +29,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": 33.3,
    "sale_discount_pct": null
   },
@@ -45,7 +47,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": 33.3,
    "sale_discount_pct": null
   },
@@ -63,7 +65,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": 33.3,
    "sale_discount_pct": null
   },
@@ -81,7 +83,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -99,7 +101,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -117,7 +119,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -135,7 +137,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -153,7 +155,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -171,25 +173,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
-   "discount_pct": null,
-   "sale_discount_pct": null
-  },
-  {
-   "name": "Samsung Galaxy A07 5G 128 GB, 4 GB RAM, Voilet, Mobile Phone",
-   "price": 19999.0,
-   "store": "Reliance Digital",
-   "category": "Samsung",
-   "url": "https://www.reliancedigital.in/product/a07-bhd-not-for-sale-ml10s1-9866763",
-   "mrp": 19999.0,
-   "product_id": "reliance:9866763",
-   "sale_price": null,
-   "sale_name": "",
-   "sale_status": "",
-   "sale_starts": "",
-   "sale_ends": "",
-   "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -207,7 +191,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -225,7 +209,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -243,7 +227,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -261,7 +245,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -279,7 +263,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -297,7 +281,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -315,7 +299,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -333,7 +317,25 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
+   "discount_pct": null,
+   "sale_discount_pct": null
+  },
+  {
+   "name": "Samsung Galaxy A17 5G 128 GB, 8 GB RAM, Blue, Mobile Phone (Without Travel Adaptor)",
+   "price": 30999.0,
+   "store": "Reliance Digital",
+   "category": "Samsung",
+   "url": "https://www.reliancedigital.in/product/samsung-galaxy-a17-5g-128-gb-8-gb-ram-blue-mobile-phone-without-travel-adaptor-mizy4x-9677873",
+   "mrp": 30999.0,
+   "product_id": "reliance:9677873",
+   "sale_price": null,
+   "sale_name": "",
+   "sale_status": "",
+   "sale_starts": "",
+   "sale_ends": "",
+   "offer_price": null,
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -351,7 +353,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -369,7 +371,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -387,7 +389,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -405,7 +407,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -423,7 +425,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -441,7 +443,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -459,7 +461,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -477,7 +479,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -495,7 +497,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -513,7 +515,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 8.3,
    "sale_discount_pct": null
   },
@@ -531,7 +533,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 8.3,
    "sale_discount_pct": null
   },
@@ -549,7 +551,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -567,7 +569,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -585,7 +587,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -603,7 +605,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -621,7 +623,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 14.3,
    "sale_discount_pct": null
   },
@@ -639,7 +641,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -657,7 +659,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -675,7 +677,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -693,7 +695,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -711,7 +713,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": 6.3,
    "sale_discount_pct": null
   },
@@ -729,7 +731,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": 6.3,
    "sale_discount_pct": null
   },
@@ -747,7 +749,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": 6.3,
    "sale_discount_pct": null
   },
@@ -765,7 +767,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": 6.3,
    "sale_discount_pct": null
   },
@@ -783,7 +785,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": 1.3,
    "sale_discount_pct": null
   },
@@ -801,7 +803,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": 1.3,
    "sale_discount_pct": null
   },
@@ -819,7 +821,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": 27.3,
    "sale_discount_pct": null
   },
@@ -837,7 +839,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -855,7 +857,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:48",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -873,7 +875,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -891,7 +893,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -909,7 +911,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -927,7 +929,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -945,7 +947,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -963,7 +965,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -981,7 +983,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -999,7 +1001,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1017,7 +1019,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1035,7 +1037,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": 12.7,
    "sale_discount_pct": null
   },
@@ -1053,7 +1055,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:54",
+   "scraped_at": "2026-10-06T16:01:55",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1071,7 +1073,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1089,7 +1091,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1107,7 +1109,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1125,7 +1127,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1143,7 +1145,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1161,7 +1163,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1179,7 +1181,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1197,7 +1199,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1215,7 +1217,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1233,7 +1235,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1251,7 +1253,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1269,7 +1271,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": 10.9,
    "sale_discount_pct": null
   },
@@ -1287,7 +1289,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1305,7 +1307,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:54",
+   "scraped_at": "2026-10-06T16:01:55",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1323,7 +1325,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1341,7 +1343,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1359,7 +1361,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1377,7 +1379,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1395,7 +1397,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:54",
+   "scraped_at": "2026-10-06T16:01:55",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1413,7 +1415,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1431,7 +1433,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:52",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1449,7 +1451,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1467,7 +1469,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1485,7 +1487,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1503,7 +1505,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1521,7 +1523,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1539,7 +1541,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1557,7 +1559,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1575,7 +1577,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1593,7 +1595,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:54",
+   "scraped_at": "2026-10-06T16:01:55",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1611,7 +1613,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1629,7 +1631,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1647,7 +1649,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1665,7 +1667,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1683,7 +1685,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:50",
+   "scraped_at": "2026-10-06T16:01:51",
    "discount_pct": 12.2,
    "sale_discount_pct": null
   },
@@ -1701,7 +1703,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1719,7 +1721,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1737,7 +1739,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1755,7 +1757,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1773,7 +1775,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1791,7 +1793,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1809,7 +1811,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1827,7 +1829,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1845,7 +1847,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1863,7 +1865,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:46",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1881,7 +1883,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1899,7 +1901,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1917,7 +1919,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 29.4,
    "sale_discount_pct": null
   },
@@ -1935,7 +1937,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 2.1,
    "sale_discount_pct": null
   },
@@ -1953,7 +1955,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 28.1,
    "sale_discount_pct": null
   },
@@ -1971,7 +1973,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -1989,7 +1991,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 29.0,
    "sale_discount_pct": null
   },
@@ -2007,7 +2009,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2025,7 +2027,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 16.1,
    "sale_discount_pct": null
   },
@@ -2043,7 +2045,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 6.1,
    "sale_discount_pct": null
   },
@@ -2061,7 +2063,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 13.8,
    "sale_discount_pct": null
   },
@@ -2079,7 +2081,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 32.2,
    "sale_discount_pct": null
   },
@@ -2097,7 +2099,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 32.1,
    "sale_discount_pct": null
   },
@@ -2115,7 +2117,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 13.3,
    "sale_discount_pct": null
   },
@@ -2133,7 +2135,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 10.5,
    "sale_discount_pct": null
   },
@@ -2151,7 +2153,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 10.5,
    "sale_discount_pct": null
   },
@@ -2169,7 +2171,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2187,7 +2189,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 28.1,
    "sale_discount_pct": null
   },
@@ -2205,7 +2207,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 13.7,
    "sale_discount_pct": null
   },
@@ -2223,7 +2225,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 23.5,
    "sale_discount_pct": null
   },
@@ -2241,7 +2243,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 30.3,
    "sale_discount_pct": null
   },
@@ -2259,7 +2261,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2277,7 +2279,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2295,7 +2297,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2313,7 +2315,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 44.1,
    "sale_discount_pct": null
   },
@@ -2331,7 +2333,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 31.7,
    "sale_discount_pct": null
   },
@@ -2349,7 +2351,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 38.6,
    "sale_discount_pct": null
   },
@@ -2367,7 +2369,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 31.8,
    "sale_discount_pct": null
   },
@@ -2385,7 +2387,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 31.8,
    "sale_discount_pct": null
   },
@@ -2403,7 +2405,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 31.8,
    "sale_discount_pct": null
   },
@@ -2421,7 +2423,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 43.3,
    "sale_discount_pct": null
   },
@@ -2439,7 +2441,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 23.4,
    "sale_discount_pct": null
   },
@@ -2457,7 +2459,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 15.6,
    "sale_discount_pct": null
   },
@@ -2475,7 +2477,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 28.3,
    "sale_discount_pct": null
   },
@@ -2493,7 +2495,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 30.6,
    "sale_discount_pct": null
   },
@@ -2511,7 +2513,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:48",
+   "scraped_at": "2026-10-06T16:01:57",
    "discount_pct": 22.6,
    "sale_discount_pct": null
   },
@@ -2529,26 +2531,8 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 16.3,
-   "sale_discount_pct": null
-  },
-  {
-   "name": "Samsung Galaxy A55 5G (Awesome Iceblue, 8GB RAM, 256GB Storage)",
-   "price": 44999.0,
-   "store": "Amazon.in",
-   "category": "Samsung",
-   "url": "https://www.amazon.in/dp/B0CWPCFSM3",
-   "mrp": 45999.0,
-   "product_id": "amazon:B0CWPCFSM3",
-   "sale_price": null,
-   "sale_name": "",
-   "sale_status": "",
-   "sale_starts": "",
-   "sale_ends": "",
-   "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
-   "discount_pct": 2.2,
    "sale_discount_pct": null
   },
   {
@@ -2565,7 +2549,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2583,7 +2567,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 16.7,
    "sale_discount_pct": null
   },
@@ -2601,13 +2585,13 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 7.8,
    "sale_discount_pct": null
   },
   {
    "name": "Google Pixel 10a 5G (Fog, 8GB RAM, 256GB Storage)",
-   "price": 51800.0,
+   "price": 51680.0,
    "store": "Amazon.in",
    "category": "Google Pixel",
    "url": "https://www.amazon.in/dp/B0GP8SY9MB",
@@ -2619,8 +2603,8 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
-   "discount_pct": 7.5,
+   "scraped_at": "2026-10-06T16:02:03",
+   "discount_pct": 7.7,
    "sale_discount_pct": null
   },
   {
@@ -2637,13 +2621,13 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 7.1,
    "sale_discount_pct": null
   },
   {
    "name": "Google Pixel 10a 5G (Berry, 8GB RAM, 256GB Storage)",
-   "price": 54599.0,
+   "price": 53900.0,
    "store": "Amazon.in",
    "category": "Google Pixel",
    "url": "https://www.amazon.in/dp/B0GP7GQFNJ",
@@ -2655,8 +2639,8 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
-   "discount_pct": 2.5,
+   "scraped_at": "2026-10-06T16:02:05",
+   "discount_pct": 3.7,
    "sale_discount_pct": null
   },
   {
@@ -2673,7 +2657,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2691,7 +2675,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 23.2,
    "sale_discount_pct": null
   },
@@ -2709,7 +2693,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 13.8,
    "sale_discount_pct": null
   },
@@ -2727,7 +2711,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 12.8,
    "sale_discount_pct": null
   },
@@ -2745,7 +2729,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 12.5,
    "sale_discount_pct": null
   },
@@ -2763,7 +2747,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 8.8,
    "sale_discount_pct": null
   },
@@ -2781,7 +2765,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 8.5,
    "sale_discount_pct": null
   },
@@ -2799,7 +2783,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2817,7 +2801,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2835,7 +2819,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -2853,7 +2837,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 9.1,
    "sale_discount_pct": null
   },
@@ -2871,7 +2855,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:55",
+   "scraped_at": "2026-10-06T16:02:03",
    "discount_pct": 9.0,
    "sale_discount_pct": null
   },
@@ -2889,7 +2873,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 7.9,
    "sale_discount_pct": null
   },
@@ -2907,7 +2891,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 6.7,
    "sale_discount_pct": null
   },
@@ -2925,7 +2909,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 3.3,
    "sale_discount_pct": null
   },
@@ -2943,7 +2927,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 23.1,
    "sale_discount_pct": null
   },
@@ -2961,7 +2945,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:51",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 23.1,
    "sale_discount_pct": null
   },
@@ -2979,7 +2963,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
+   "scraped_at": "2026-10-06T16:01:59",
    "discount_pct": 23.8,
    "sale_discount_pct": null
   },
@@ -2997,26 +2981,8 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": null,
-   "sale_discount_pct": null
-  },
-  {
-   "name": "Samsung Galaxy S25 Ultra 5G AI Smartphone (Titanium Gray, 12GB RAM, 512GB Storage), 200MP Camera, 5000mAh Ultra Long Battery, QHD+ Dynamic AMOLED 2X, Galaxy AI, Knox Security, S Pen Included",
-   "price": 114999.0,
-   "store": "Amazon.in",
-   "category": "Samsung",
-   "url": "https://www.amazon.in/dp/B0DT4N4Z28",
-   "mrp": 141999.0,
-   "product_id": "amazon:B0DT4N4Z28",
-   "sale_price": null,
-   "sale_name": "",
-   "sale_status": "",
-   "sale_starts": "",
-   "sale_ends": "",
-   "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:45",
-   "discount_pct": 19.0,
    "sale_discount_pct": null
   },
   {
@@ -3033,12 +2999,12 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 20.0,
    "sale_discount_pct": null
   },
   {
-   "name": "Apple iPhone 17 Pro Max 256 GB",
+   "name": "Apple Sponsored Sponsored You are seeing this ad based on the product’s relevance to your search query. Let us know Apple iPhone 17 Pro Max 256 GB",
    "price": 142490.0,
    "store": "Amazon.in",
    "category": "iPhone",
@@ -3051,7 +3017,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": 4.9,
    "sale_discount_pct": null
   },
@@ -3069,7 +3035,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -3087,7 +3053,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:57",
+   "scraped_at": "2026-10-06T16:02:05",
    "discount_pct": 5.8,
    "sale_discount_pct": null
   },
@@ -3105,7 +3071,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -3123,7 +3089,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -3141,7 +3107,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   },
@@ -3159,7 +3125,7 @@
    "sale_starts": "",
    "sale_ends": "",
    "offer_price": null,
-   "scraped_at": "2026-10-06T15:51:43",
+   "scraped_at": "2026-10-06T16:01:43",
    "discount_pct": null,
    "sale_discount_pct": null
   }

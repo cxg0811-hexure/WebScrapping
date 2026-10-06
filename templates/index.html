@@ -43,9 +43,14 @@
   <h1>Phone Price Tracker</h1>
   <div class="actions">
     <span id="runningBadge" class="running" hidden><span class="spinner"></span>Scraping latest prices&hellip;</span>
+{% if static %}
+    <a id="downloadBtn" class="btn primary" href="phone_prices_latest.xlsx" download>&#11015; Download latest Excel</a>
+    {% if repo_url %}<a class="btn secondary" href="{{ repo_url }}/actions/workflows/scrape.yml" target="_blank" rel="noopener" title="Open GitHub Actions and click 'Run workflow'">&#8635; Run now (GitHub)</a>{% endif %}
+{% else %}
     <a id="downloadBtn" class="btn primary" href="/download">&#11015; Download latest Excel</a>
     <button id="freshBtn" class="secondary" title="Scrape all stores now, then download">&#11015; Scrape &amp; download</button>
     <button id="refreshBtn" class="secondary">&#8635; Refresh now</button>
+{% endif %}
   </div>
 </header>
 
@@ -66,12 +71,14 @@
 
   <table>
     <thead><tr><th>#</th><th>Product</th><th>Category</th><th>Store</th><th class="num">Price</th><th class="num">MRP</th><th class="num">Discount</th><th class="num">Sale Price</th><th>Sale</th><th></th></tr></thead>
-    <tbody id="rows"><tr><td colspan="8" class="muted">Loading&hellip;</td></tr></tbody>
+    <tbody id="rows"><tr><td colspan="10" class="muted">Loading&hellip;</td></tr></tbody>
   </table>
   <p class="muted">Prices are sorted from lowest to highest. The page updates automatically when new data is scraped.</p>
 </main>
 
 <script>
+const STATIC = {{ "true" if static else "false" }};
+const INTERVAL_MIN = {{ interval }};
 const inr = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 let allProducts = [];
 let lastUpdated = null;
@@ -102,7 +109,7 @@ function render() {
   const tbody = $("rows");
   tbody.replaceChildren();
   if (!rows.length) {
-    const tr = el("tr"); const td = el("td", allProducts.length ? "No matches." : "No data yet — first scrape is running.", "muted");
+    const tr = el("tr"); const td = el("td", allProducts.length ? "No matches." : "No data yet.", "muted");
     td.colSpan = 10; tr.append(td); tbody.append(tr); return;
   }
   rows.forEach((p, i) => {
@@ -113,7 +120,7 @@ function render() {
     tr.append(el("td", p.mrp && p.mrp > p.price ? inr.format(p.mrp) : "", "num mrp"));
     tr.append(el("td", p.discount_pct ? p.discount_pct + "%" : "", "num disc"));
     tr.append(el("td", p.sale_price ? inr.format(p.sale_price) : "", "num disc"));
-    const sale = [p.sale_name, p.sale_status, p.sale_starts ? "from " + p.sale_starts : ""].filter(Boolean).join(" ? ");
+    const sale = [p.sale_name, p.sale_status, p.sale_starts ? "from " + p.sale_starts : ""].filter(Boolean).join(" \u00b7 ");
     tr.append(el("td", sale, "muted"));
     const lt = el("td"); const a = el("a", "View");
     a.href = p.url; a.target = "_blank"; a.rel = "noopener noreferrer"; lt.append(a); tr.append(lt);
@@ -121,9 +128,9 @@ function render() {
   });
 }
 
-async function loadProducts() {
-  const res = await fetch("/api/products", { cache: "no-store" });
-  allProducts = (await res.json()).products;
+async function loadProducts(products) {
+  if (!products) products = (await (await fetch("/api/products", { cache: "no-store" })).json()).products;
+  allProducts = products;
   fillSelect($("storeFilter"), allProducts.map(p => p.store));
   fillSelect($("categoryFilter"), allProducts.map(p => p.category));
   render();
@@ -131,9 +138,17 @@ async function loadProducts() {
 
 async function pollStatus() {
   try {
-    const s = await (await fetch("/api/status", { cache: "no-store" })).json();
+    let s, data = null;
+    if (STATIC) {
+      data = await (await fetch("phone_prices_latest.json?t=" + Date.now(), { cache: "no-store" })).json();
+      const next = new Date(new Date(data.generated_at).getTime() + INTERVAL_MIN * 60000);
+      s = { running: false, last_updated: data.generated_at, total: data.products.length, stores: data.stores,
+            next_run: next.toISOString(), excel_available: true, last_error: null };
+    } else {
+      s = await (await fetch("/api/status", { cache: "no-store" })).json();
+    }
     $("runningBadge").hidden = !s.running;
-    $("refreshBtn").disabled = s.running;
+    if ($("refreshBtn")) $("refreshBtn").disabled = s.running;
     $("lastUpdated").textContent = fmtTime(s.last_updated);
     $("total").textContent = s.total;
     $("nextRun").textContent = s.next_run ? new Date(s.next_run).toLocaleTimeString("en-IN", { timeStyle: "short" }) : "—";
@@ -142,19 +157,21 @@ async function pollStatus() {
     $("errorBox").textContent = s.last_error || "";
     $("downloadBtn").style.pointerEvents = s.excel_available ? "" : "none";
     $("downloadBtn").style.opacity = s.excel_available ? "" : ".5";
-    if (s.last_updated !== lastUpdated) { lastUpdated = s.last_updated; await loadProducts(); }
-  } catch (e) { $("errorBox").textContent = "Server unreachable: " + e; }
+    if (s.last_updated !== lastUpdated) { lastUpdated = s.last_updated; await loadProducts(data && data.products); }
+  } catch (e) { $("errorBox").textContent = (STATIC ? "Could not load data: " : "Server unreachable: ") + e; }
 }
 
-$("refreshBtn").onclick = async () => { await fetch("/api/refresh", { method: "POST" }); pollStatus(); };
-$("freshBtn").onclick = () => {
-  $("runningBadge").hidden = false;
-  window.location.href = "/download?fresh=true";
-};
+if (!STATIC) {
+  $("refreshBtn").onclick = async () => { await fetch("/api/refresh", { method: "POST" }); pollStatus(); };
+  $("freshBtn").onclick = () => {
+    $("runningBadge").hidden = false;
+    window.location.href = "/download?fresh=true";
+  };
+}
 ["search", "storeFilter", "categoryFilter"].forEach(id => $(id).addEventListener("input", render));
 
 pollStatus();
-setInterval(pollStatus, 5000);
+setInterval(pollStatus, STATIC ? 60000 : 5000);
 </script>
 </body>
 </html>

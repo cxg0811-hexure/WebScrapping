@@ -41,7 +41,7 @@ app = FastAPI(title="Phone Price Tracker", lifespan=lifespan)
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
     return templates.TemplateResponse(
-        request, "index.html", {"interval": config.REFRESH_INTERVAL_MINUTES}
+        request, "index.html", {"interval": config.REFRESH_INTERVAL_MINUTES, "static": False}
     )
 
 

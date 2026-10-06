@@ -12,7 +12,7 @@ from core.service import service
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     result = service.run()
-    if not result:
+    if not result or not result.get("products"):
         print(f"Scrape failed: {service.last_error}")
         sys.exit(1)
     for store, info in result["stores"].items():

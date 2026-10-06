@@ -43,6 +43,7 @@ def test_parse_price(text, expected):
     ("Apple iPhone 16 Silicone Case with MagSafe", False),
     ("Spigen Tempered Glass for iPhone 16", False),
     ("Apple iPhone 15 Refurbished", False),
+    ("Apple iPhone Air MagSafe Battery", False),
 ])
 def test_genuine_filter(title, ok):
     assert is_target_phone(title) is ok

@@ -15,7 +15,7 @@ EXCLUDE_PATTERNS = re.compile(
     r"(?<!charging )(?<!magsafe )(?<!wireless )\bcase\b|\b(cover|tempered|screen guard|screen protector|"
     r"protector|skin|sleeve|pouch|compatible|holder|charger|adapter|cable|stand|tablet|tab|watch|buds|"
     r"ring|book|fit|band|earbuds|earphones|headphones|refurbished|renewed|pre-owned|unboxed|"
-    r"for (?:apple|iphone|samsung|galaxy|pixel))\b|extended warranty|warranty plan|applecare|protect\+",
+    r"for (?:apple|iphone|samsung|galaxy|pixel))\b|magsafe battery|battery pack|power bank|extended warranty|warranty plan|applecare|protect\+",
     re.IGNORECASE,
 )
 _INVISIBLE = re.compile(r"[\u200b-\u200f\u2060\ufeff]")

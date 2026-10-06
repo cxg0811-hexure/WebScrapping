@@ -129,3 +129,22 @@ Most stores reveal final sale prices only when the sale goes live, so many rows 
   Stores may block datacenter IPs, so some stores can return fewer rows than from a home or office network.
 * **Temporary public URL:** run `tunnel.bat` while the app is running locally. It prints a `trycloudflare.com` link.
   The link works only while this PC and the app are on.
+
+## Hosting on GitHub Pages
+
+The workflow in `.github/workflows/scrape.yml` scrapes every store, builds a static
+copy of the page with `build_static.py`, and publishes it to GitHub Pages:
+
+* Runs every 10 minutes (GitHub can delay scheduled runs at busy times), on every
+  push to `main`, and on demand from **Actions > Scrape prices and publish > Run workflow**.
+* If a run collects no products, it fails and the previous report stays online.
+* The page polls the published JSON every minute and shows new data automatically.
+
+One-time setup:
+
+1. Make the repository public (**Settings > General > Danger Zone > Change visibility**).
+2. Set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**.
+3. Run the workflow once from the **Actions** tab. The site is published at
+   `https://<user>.github.io/<repo>/`.
+
+To build the static site locally: `python run_scraper.py` then `python build_static.py`.

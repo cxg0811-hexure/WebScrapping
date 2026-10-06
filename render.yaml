@@ -1,0 +1,10 @@
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+services:
+  - type: web
+    name: phone-price-tracker
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/status
+    envVars:
+      - key: REFRESH_INTERVAL_MINUTES
+        value: "2"

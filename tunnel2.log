@@ -1,0 +1,73 @@
+2026-10-05T13:44:30Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+2026-10-05T13:44:30Z INF Requesting new quick Tunnel on trycloudflare.com...
+2026-10-05T13:44:35Z INF +--------------------------------------------------------------------------------------------+
+2026-10-05T13:44:35Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2026-10-05T13:44:35Z INF |  https://books-excuse-inn-metal.trycloudflare.com                                          |
+2026-10-05T13:44:35Z INF +--------------------------------------------------------------------------------------------+
+2026-10-05T13:44:35Z INF Cannot determine default configuration path. No file [config.yml config.yaml] in [~/.cloudflared ~/.cloudflare-warp ~/cloudflare-warp]
+2026-10-05T13:44:35Z INF Version 2026.9.3 (Checksum f096265ec2fcbe9bb6e2d64268db167ced3fcbb83d894bdb9e2fcdb26f2ea7e2)
+2026-10-05T13:44:35Z INF GOOS: windows, GOVersion: go1.26.8, GoArch: amd64
+2026-10-05T13:44:35Z INF Settings: map[ha-connections:1 p:http2 protocol:http2 url:http://localhost:8000]
+2026-10-05T13:44:35Z INF cloudflared will not automatically update on Windows systems.
+2026-10-05T13:44:35Z INF Generated Connector ID: bdfdbf59-8c05-43de-8e33-b9f047610397
+2026-10-05T13:44:35Z INF Initial protocol http2
+2026-10-05T13:44:35Z INF ICMP proxy will use 10.142.224.5 as source for IPv4
+2026-10-05T13:44:35Z INF ICMP proxy will use fe80::edf1:7b51:48c6:89ba in zone Ethernet 2 as source for IPv6
+2026-10-05T13:44:35Z INF cloudflared does not support loading the system root certificate pool on Windows. Please use --origin-ca-pool <PATH> to specify the path to the certificate pool
+2026-10-05T13:44:35Z INF ICMP proxy will use 10.142.224.5 as source for IPv4
+2026-10-05T13:44:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.77
+2026-10-05T13:44:35Z INF ICMP proxy will use fe80::edf1:7b51:48c6:89ba in zone Ethernet 2 as source for IPv6
+2026-10-05T13:44:35Z INF Starting metrics server on 127.0.0.1:20241/metrics
+2026-10-05T13:44:35Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.77
+2026-10-05T13:44:35Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.77
+2026-10-05T13:44:35Z INF Retrying connection in up to 2s connIndex=0 event=0 ip=198.41.192.77
+2026-10-05T13:44:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.200.63
+2026-10-05T13:44:35Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.200.63
+2026-10-05T13:44:35Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.200.63
+2026-10-05T13:44:35Z INF Retrying connection in up to 4s connIndex=0 event=0 ip=198.41.200.63
+2026-10-05T13:44:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:44:36Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:44:36Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:44:36Z INF Retrying connection in up to 8s connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:44:37Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.107
+2026-10-05T13:44:38Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.107
+2026-10-05T13:44:38Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.107
+2026-10-05T13:44:38Z INF Retrying connection in up to 16s connIndex=0 event=0 ip=198.41.192.107
+2026-10-05T13:44:45Z INF +----------------------------------------------------------------------------------------------------+
+2026-10-05T13:44:45Z INF |                                      CONNECTIVITY PRE-CHECKS                                       |
+2026-10-05T13:44:45Z INF +----------------------------------------------------------------------------------------------------+
+2026-10-05T13:44:45Z INF |  COMPONENT         TARGET                     STATUS  DETAILS                                      |
+2026-10-05T13:44:45Z INF |  DNS Resolution    region1.v2.argotunnel.com  PASS    DNS Resolved successfully                    |
+2026-10-05T13:44:45Z INF |  DNS Resolution    region2.v2.argotunnel.com  PASS    DNS Resolved successfully                    |
+2026-10-05T13:44:45Z INF |  UDP Connectivity  region1.v2.argotunnel.com  FAIL    QUIC connection failed                       |
+2026-10-05T13:44:45Z INF |  UDP Connectivity  region2.v2.argotunnel.com  FAIL    QUIC connection failed                       |
+2026-10-05T13:44:45Z INF |  TCP Connectivity  region1.v2.argotunnel.com  FAIL    HTTP/2 connection is blocked or unreachable  |
+2026-10-05T13:44:45Z INF |  TCP Connectivity  region2.v2.argotunnel.com  FAIL    HTTP/2 connection is blocked or unreachable  |
+2026-10-05T13:44:45Z INF |  Cloudflare API    api.cloudflare.com:443     PASS    API is reachable                             |
+2026-10-05T13:44:45Z INF |  ERROR: Allow outbound QUIC traffic on port 7844 or use HTTP2.                                     |
+2026-10-05T13:44:45Z INF |  ERROR: Allow outbound QUIC traffic on port 7844 or use HTTP2.                                     |
+2026-10-05T13:44:45Z INF |  ERROR: Allow outbound TCP on port 7844.                                                           |
+2026-10-05T13:44:45Z INF |  ERROR: Allow outbound TCP on port 7844.                                                           |
+2026-10-05T13:44:45Z INF |                                                                                                    |
+2026-10-05T13:44:45Z INF |  SUMMARY: Environment has critical failures. cloudflared may not be able to establish a tunnel.    |
+2026-10-05T13:44:45Z INF +----------------------------------------------------------------------------------------------------+
+2026-10-05T13:44:45Z INF precheck component="DNS Resolution" details="DNS Resolved successfully" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=pass target=region1.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="DNS Resolution" details="DNS Resolved successfully" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=pass target=region2.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="UDP Connectivity" details="QUIC connection failed" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=fail target=region1.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="UDP Connectivity" details="QUIC connection failed" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=fail target=region2.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="TCP Connectivity" details="HTTP/2 connection is blocked or unreachable" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=fail target=region1.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="TCP Connectivity" details="HTTP/2 connection is blocked or unreachable" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=fail target=region2.v2.argotunnel.com
+2026-10-05T13:44:45Z INF precheck component="Cloudflare API" details="API is reachable" run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2 status=pass target=api.cloudflare.com:443
+2026-10-05T13:44:45Z INF precheck complete hard_fail=true run_id=f66aaa3f-8c68-4cf4-9cd9-ee8fa4d7a0c2
+2026-10-05T13:44:46Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.7
+2026-10-05T13:44:46Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.7
+2026-10-05T13:44:46Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.7
+2026-10-05T13:44:46Z INF Retrying connection in up to 32s connIndex=0 event=0 ip=198.41.192.7
+2026-10-05T13:45:01Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.227
+2026-10-05T13:45:01Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.227
+2026-10-05T13:45:01Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.227
+2026-10-05T13:45:01Z INF Retrying connection in up to 32s connIndex=0 event=0 ip=198.41.192.227
+2026-10-05T13:45:05Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveID(65074) CurveP256] connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:45:05Z ERR Unable to establish connection with Cloudflare edge error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:45:05Z ERR Serve tunnel error error="TLS handshake with edge error: tls: failed to verify certificate: x509: certificate signed by unknown authority" connIndex=0 event=0 ip=198.41.192.167
+2026-10-05T13:45:05Z INF Retrying connection in up to 32s connIndex=0 event=0 ip=198.41.192.167

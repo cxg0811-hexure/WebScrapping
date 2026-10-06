@@ -17,12 +17,50 @@ HEADER_FONT = Font(bold=True, color="FFFFFF")
 INR_FORMAT = '"₹"#,##,##0'
 
 COLUMNS = [
-    ("#", 6), ("Product", 70), ("Category", 14), ("Store", 16), ("Price (?)", 14),
-    ("MRP (?)", 14), ("Discount %", 11), ("Sale Price (?)", 15), ("Sale Discount %", 12),
-    ("Sale Name", 24), ("Sale Status", 11), ("Sale Starts", 18), ("Sale Ends", 18),
-    ("Link", 12), ("Scraped At", 20),
+    ("#", 6), ("Product", 70), ("Category", 14), ("Store", 16), ("Price (₹)", 14),
+    ("MRP (₹)", 14), ("Discount %", 11), ("Sale Price (₹)", 15), ("Sale Discount %", 12),
+    ("With Bank Offer (₹)", 18), ("Sale Name", 24), ("Sale Status", 11), ("Sale Starts", 18),
+    ("Sale Ends", 18), ("Link", 12), ("Scraped At", 20),
 ]
-LINK_COL, SCRAPED_COL = 14, 15
+SALE_COLUMNS = [
+    ("#", 6), ("Product", 70), ("Category", 14), ("Store", 16), ("Sale Price (₹)", 15),
+    ("With Bank Offer (₹)", 18), ("Regular Price (₹)", 16), ("MRP (₹)", 14), ("Sale Name", 24),
+    ("Sale Status", 11), ("Sale Starts", 18), ("Sale Ends", 18), ("Link", 12),
+]
+CATEGORY_COLUMNS = [
+    ("Product", 70), ("Store", 16), ("Price (₹)", 14), ("MRP (₹)", 14), ("Sale Price (₹)", 15),
+    ("With Bank Offer (₹)", 18), ("Sale Name", 24), ("Link", 12),
+]
+
+
+def _money(value):
+    return (value, INR_FORMAT) if value else None
+
+
+def _pct(value):
+    return (value / 100, "0.0%") if value is not None else None
+
+
+def _link(url):
+    return ("Open", url)
+
+
+def _write_row(ws, r, values):
+    """Write a row; each value is plain, None, (number, format) or ('Open', url) for hyperlinks."""
+    for c, v in enumerate(values, start=1):
+        if v is None:
+            continue
+        if isinstance(v, tuple) and v[0] == "Open":
+            cell = ws.cell(r, c, "Open")
+            cell.hyperlink, cell.style = v[1], "Hyperlink"
+        elif isinstance(v, tuple):
+            ws.cell(r, c, v[0]).number_format = v[1]
+        else:
+            ws.cell(r, c, v)
+
+
+def _mrp(p):
+    return _money(p["mrp"]) if p.get("mrp") and p["mrp"] > p["price"] else None
 
 
 def _write_header(ws, columns):
@@ -42,55 +80,46 @@ def build_workbook(products: list[dict], path: Path, generated_at: datetime) -> 
     ws.title = "All Phones"
     _write_header(ws, COLUMNS)
     for i, p in enumerate(rows, start=1):
-        r = i + 1
-        ws.cell(r, 1, i)
-        ws.cell(r, 2, p["name"])
-        ws.cell(r, 3, p["category"])
-        ws.cell(r, 4, p["store"])
-        ws.cell(r, 5, p["price"]).number_format = INR_FORMAT
-        if p.get("mrp") and p["mrp"] > p["price"]:
-            ws.cell(r, 6, p["mrp"]).number_format = INR_FORMAT
-        if p.get("discount_pct") is not None:
-            ws.cell(r, 7, p["discount_pct"] / 100).number_format = "0.0%"
-        if p.get("sale_price"):
-            ws.cell(r, 8, p["sale_price"]).number_format = INR_FORMAT
-        if p.get("sale_discount_pct") is not None:
-            ws.cell(r, 9, p["sale_discount_pct"] / 100).number_format = "0.0%"
-        ws.cell(r, 10, p.get("sale_name", ""))
-        ws.cell(r, 11, p.get("sale_status", ""))
-        ws.cell(r, 12, p.get("sale_starts", ""))
-        ws.cell(r, 13, p.get("sale_ends", ""))
-        link = ws.cell(r, LINK_COL, "Open")
-        link.hyperlink, link.style = p["url"], "Hyperlink"
-        ws.cell(r, SCRAPED_COL, p["scraped_at"].replace("T", " "))
+        _write_row(ws, i + 1, [
+            i, p["name"], p["category"], p["store"], _money(p["price"]), _mrp(p), _pct(p.get("discount_pct")),
+            _money(p.get("sale_price")), _pct(p.get("sale_discount_pct")), _money(p.get("offer_price")),
+            p.get("sale_name", ""), p.get("sale_status", ""), p.get("sale_starts", ""), p.get("sale_ends", ""),
+            _link(p["url"]), p["scraped_at"].replace("T", " "),
+        ])
     if rows:
         ws.auto_filter.ref = f"A1:{get_column_letter(len(COLUMNS))}{len(rows) + 1}"
+
+    # Sale listings only (e.g. Big Billion Days), sorted by sale price ascending.
+    deals = sorted((p for p in rows if p.get("sale_price")), key=lambda p: (p["sale_price"], p["name"]))
+    sws = wb.create_sheet("Sale Deals")
+    _write_header(sws, SALE_COLUMNS)
+    for i, p in enumerate(deals, start=1):
+        _write_row(sws, i + 1, [
+            i, p["name"], p["category"], p["store"], _money(p["sale_price"]), _money(p.get("offer_price")),
+            _money(p["price"]), _mrp(p), p.get("sale_name", ""), p.get("sale_status", ""),
+            p.get("sale_starts", ""), p.get("sale_ends", ""), _link(p["url"]),
+        ])
+    if deals:
+        sws.auto_filter.ref = f"A1:{get_column_letter(len(SALE_COLUMNS))}{len(deals) + 1}"
 
     # One sheet per category, also sorted ascending by price.
     by_cat: dict[str, list[dict]] = defaultdict(list)
     for p in rows:
         by_cat[p["category"]].append(p)
-    cat_cols = [("Product", 70), ("Store", 16), ("Price (₹)", 14), ("MRP (₹)", 14), ("Link", 12)]
     for cat in sorted(by_cat):
         cws = wb.create_sheet(cat[:31])
-        _write_header(cws, cat_cols)
+        _write_header(cws, CATEGORY_COLUMNS)
         for r, p in enumerate(by_cat[cat], start=2):
-            cws.cell(r, 1, p["name"])
-            cws.cell(r, 2, p["store"])
-            cws.cell(r, 3, p["price"]).number_format = INR_FORMAT
-            if p.get("mrp") and p["mrp"] > p["price"]:
-                cws.cell(r, 4, p["mrp"]).number_format = INR_FORMAT
-            if p.get("sale_price"):
-                cws.cell(r, 5, p["sale_price"]).number_format = INR_FORMAT
-            cws.cell(r, 6, p.get("sale_name", ""))
-            c = cws.cell(r, 7, "Open")
-            c.hyperlink, c.style = p["url"], "Hyperlink"
+            _write_row(cws, r, [
+                p["name"], p["store"], _money(p["price"]), _mrp(p), _money(p.get("sale_price")),
+                _money(p.get("offer_price")), p.get("sale_name", ""), _link(p["url"]),
+            ])
 
     summary = wb.create_sheet("Summary", 0)
     summary["A1"] = "Phone Price Report (iPhone, Samsung, Google Pixel)"
     summary["A1"].font = Font(bold=True, size=14)
     summary["A2"] = f"Generated: {generated_at:%Y-%m-%d %H:%M:%S}"
-    summary["A3"] = f"Total listings: {len(rows)}"
+    summary["A3"] = f"Total listings: {len(rows)}  |  Sale listings: {len(deals)} (see 'Sale Deals' sheet)"
     _hdr = [("Category", 18), ("Listings", 10), ("Lowest Price (₹)", 18), ("Cheapest Product", 70), ("Store", 16)]
     for idx, (title, width) in enumerate(_hdr, start=1):
         cell = summary.cell(5, idx, title)

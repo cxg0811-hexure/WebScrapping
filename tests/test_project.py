@@ -10,7 +10,7 @@ import config
 from core.excel import build_workbook
 from core.filters import categorize, is_target_phone, normalize_name
 from scrapers.base import Product, parse_price
-from scrapers.flipkart import FlipkartScraper
+from scrapers.flipkart import FlipkartScraper, parse_offer_price
 from scrapers.poorvika import PoorvikaScraper
 from scrapers.reliance_digital import RelianceDigitalScraper
 from scrapers.vijay_sales import VijaySalesScraper
@@ -121,6 +121,30 @@ def test_excel_sorted_ascending(tmp_path):
     ws = load_workbook(path)["All Phones"]
     prices = [ws.cell(r, 5).value for r in range(2, ws.max_row + 1)]
     assert prices == [12000, 40000, 90000]
+    assert ws.cell(1, 5).value == "Price (\u20b9)"
+    deals = load_workbook(path)["Sale Deals"]
+    assert deals.max_row == 2 and deals.cell(2, 2).value == "Samsung Galaxy S25" and deals.cell(2, 5).value == 10000
+    brand = load_workbook(path)["Samsung"]
+    headers = [brand.cell(1, c).value for c in range(1, brand.max_column + 1)]
+    assert brand.cell(2, headers.index("Sale Price (\u20b9)") + 1).value == 10000
+
+
+def test_flipkart_offer_price_parser():
+    html = "<div>Big Billion Days Price</div><div>\u20b947,999</div><div>Buy at \u20b943,999</div><div>Buy at \u20b91,000</div>"
+    assert parse_offer_price(html, 47999) == 43999
+    assert parse_offer_price("<div>Buy at \u20b91,000</div>", 47999) is None  # implausibly low
+    assert parse_offer_price("<div>no offer</div>", 47999) is None
+
+
+def test_flipkart_enrich_fetches_only_sale_items(monkeypatch):
+    s = FlipkartScraper()
+    calls = []
+    monkeypatch.setattr(s, "fetch", lambda url, **k: calls.append(url) or FakeResponse(text="<p>Buy at \u20b990</p>"))
+    monkeypatch.setattr(s, "polite_pause", lambda: None)
+    sale = Product("Google Pixel 10a", 100, "Flipkart", "Google Pixel", "http://sale", sale_price=100, sale_name="Big Billion Days")
+    plain = Product("Google Pixel 9", 100, "Flipkart", "Google Pixel", "http://plain")
+    s.enrich([sale, plain])
+    assert calls == ["http://sale"] and sale.offer_price == 90 and plain.offer_price is None
 
 
 @pytest.fixture

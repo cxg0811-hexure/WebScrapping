@@ -83,7 +83,8 @@ The file is written to `output/phone_prices_latest.xlsx`. The last 10 reports ar
 kept in `output/history/`. Sheets:
 
 * **Summary**: cheapest product per category.
-* **All Phones**: every listing sorted by price, with MRP, discount, store, and link.
+* **All Phones**: every listing sorted by price, with MRP, discount, sale price, bank-offer price, store, and link.
+* **Sale Deals**: only listings with a sale price (for example Big Billion Days), sorted by sale price.
 * **One sheet per category**: sorted by price.
 
 ## Configuration
@@ -98,6 +99,7 @@ Set these environment variables to override the defaults in `config.py`.
 | `ENABLED_STORES`           | `amazon,flipkart,reliance_digital,vijay_sales,poorvika` | Stores to scrape |
 | `USE_SYSTEM_CERTS`         | `1`                                | Use the Windows certificate store (needed behind corporate proxies) |
 | `HISTORY_KEEP`             | `20`                               | Number of archived reports to keep    |
+| `MAX_SALE_DETAIL_PAGES`    | `25`                               | Flipkart sale product pages opened per run to read the bank-offer price |
 
 ## Notes and limitations
 
@@ -121,6 +123,13 @@ Sale columns (Sale Price, Sale Discount %, Sale Name, Status, Starts, Ends) are 
 * **Reliance Digital, Poorvika**: no sale price is published, so these stay blank.
 
 Most stores reveal final sale prices only when the sale goes live, so many rows will be blank until then.
+
+For Flipkart sale listings, the scraper also opens the product page and reads the
+"Buy at ₹X" price. This is shown as **With Bank Offer**. It is the effective price
+after the best card offer, so it depends on paying with that bank's card.
+
+On the web page, use the **Sale prices only** or **Big Billion Days only** filter
+to list sale rows sorted by sale price.
 
 ## Hosting online
 

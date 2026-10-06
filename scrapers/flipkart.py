@@ -7,6 +7,7 @@ from urllib.parse import quote_plus
 
 from bs4 import BeautifulSoup
 
+import config
 from core.filters import normalize_name
 from scrapers.base import BaseScraper, Product, parse_price
 
@@ -73,4 +74,26 @@ class FlipkartScraper(BaseScraper):
                 sale_name=sale_name,
                 sale_status=("Upcoming" if upcoming else "Live") if sale_name else "",
             )
+
+    def enrich(self, products: list[Product]) -> None:
+        """Read the 'Buy at ₹X' bank-offer price from the product page of each sale listing."""
+        sale_items = [p for p in products if p.sale_name][: config.MAX_SALE_DETAIL_PAGES]
+        for p in sale_items:
+            resp = self.fetch(p.url)
+            if resp:
+                p.offer_price = parse_offer_price(resp.text, p.price)
+            self.polite_pause()
+
+
+_BUY_AT = re.compile(r"^\s*Buy at\s*\u20b9\s*([\d,]+)", re.IGNORECASE)
+
+
+def parse_offer_price(html: str, price: float) -> float | None:
+    """Return the first 'Buy at ₹X' value on a product page if it is a plausible discount on price."""
+    for text in BeautifulSoup(html, "lxml").find_all(string=_BUY_AT):
+        value = parse_price(_BUY_AT.match(text).group(1))
+        if value and price * 0.5 <= value < price:
+            return value
+        break
+    return None
 

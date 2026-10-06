@@ -63,6 +63,8 @@ class Product:
     sale_status: str = ""  # "Live", "Upcoming" or ""
     sale_starts: str = ""
     sale_ends: str = ""
+    # Lowest price after bank/card offers, as advertised on the product page ("Buy at ...").
+    offer_price: float | None = None
     scraped_at: str = field(default_factory=lambda: datetime.now().isoformat(timespec="seconds"))
 
     @property
@@ -145,8 +147,17 @@ class BaseScraper(ABC):
                 self.polite_pause()
                 if not found:
                     break
-        log.info("%s: collected %d products", self.name, len(results))
-        return list(results.values())
+        products = list(results.values())
+        try:
+            self.enrich(products)
+        except Exception as exc:
+            log.exception("%s: enrich failed", self.name)
+            self.errors.append(f"enrich: {exc}")
+        log.info("%s: collected %d products", self.name, len(products))
+        return products
+
+    def enrich(self, products: list[Product]) -> None:
+        """Optional hook to add details (e.g. bank-offer price) from product pages."""
 
     def scrape_with_errors(self, queries: dict[str, str], pages: int) -> tuple[list[Product], list[str]]:
         return self.scrape(queries, pages), self.errors

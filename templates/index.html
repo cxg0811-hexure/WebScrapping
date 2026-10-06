@@ -67,11 +67,16 @@
     <input id="search" type="search" placeholder="Search e.g. iPhone 17 256GB">
     <select id="storeFilter"><option value="">All stores</option></select>
     <select id="categoryFilter"><option value="">All categories</option></select>
+    <select id="saleFilter">
+      <option value="">All listings</option>
+      <option value="sale">Sale prices only</option>
+      <option value="bbd">Big Billion Days only</option>
+    </select>
   </div>
 
   <table>
-    <thead><tr><th>#</th><th>Product</th><th>Category</th><th>Store</th><th class="num">Price</th><th class="num">MRP</th><th class="num">Discount</th><th class="num">Sale Price</th><th>Sale</th><th></th></tr></thead>
-    <tbody id="rows"><tr><td colspan="10" class="muted">Loading&hellip;</td></tr></tbody>
+    <thead><tr><th>#</th><th>Product</th><th>Category</th><th>Store</th><th class="num">Price</th><th class="num">MRP</th><th class="num">Discount</th><th class="num">Sale Price</th><th class="num">With bank offer</th><th>Sale</th><th></th></tr></thead>
+    <tbody id="rows"><tr><td colspan="11" class="muted">Loading&hellip;</td></tr></tbody>
   </table>
   <p class="muted">Prices are sorted from lowest to highest. The page updates automatically when new data is scraped.</p>
 </main>
@@ -104,13 +109,16 @@ function render() {
   const q = $("search").value.trim().toLowerCase();
   const store = $("storeFilter").value;
   const cat = $("categoryFilter").value;
+  const sale = $("saleFilter").value;
   const rows = allProducts.filter(p =>
-    (!q || p.name.toLowerCase().includes(q)) && (!store || p.store === store) && (!cat || p.category === cat));
+    (!q || p.name.toLowerCase().includes(q)) && (!store || p.store === store) && (!cat || p.category === cat) &&
+    (!sale || (sale === "sale" ? p.sale_price : /big billion/i.test(p.sale_name || ""))))
+    .sort((a, b) => sale ? (a.sale_price - b.sale_price) : 0);
   const tbody = $("rows");
   tbody.replaceChildren();
   if (!rows.length) {
     const tr = el("tr"); const td = el("td", allProducts.length ? "No matches." : "No data yet.", "muted");
-    td.colSpan = 10; tr.append(td); tbody.append(tr); return;
+    td.colSpan = 11; tr.append(td); tbody.append(tr); return;
   }
   rows.forEach((p, i) => {
     const tr = el("tr");
@@ -120,6 +128,7 @@ function render() {
     tr.append(el("td", p.mrp && p.mrp > p.price ? inr.format(p.mrp) : "", "num mrp"));
     tr.append(el("td", p.discount_pct ? p.discount_pct + "%" : "", "num disc"));
     tr.append(el("td", p.sale_price ? inr.format(p.sale_price) : "", "num disc"));
+    tr.append(el("td", p.offer_price ? inr.format(p.offer_price) : "", "num disc"));
     const sale = [p.sale_name, p.sale_status, p.sale_starts ? "from " + p.sale_starts : ""].filter(Boolean).join(" \u00b7 ");
     tr.append(el("td", sale, "muted"));
     const lt = el("td"); const a = el("a", "View");
@@ -168,7 +177,7 @@ if (!STATIC) {
     window.location.href = "/download?fresh=true";
   };
 }
-["search", "storeFilter", "categoryFilter"].forEach(id => $(id).addEventListener("input", render));
+["search", "storeFilter", "categoryFilter", "saleFilter"].forEach(id => $(id).addEventListener("input", render));
 
 pollStatus();
 setInterval(pollStatus, STATIC ? 60000 : 5000);

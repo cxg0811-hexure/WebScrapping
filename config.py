@@ -21,6 +21,8 @@ PAGES_PER_QUERY = int(os.getenv("PAGES_PER_QUERY", "2"))
 REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "25"))
 # Polite delay (seconds) between requests to the same store.
 REQUEST_DELAY = float(os.getenv("REQUEST_DELAY", "1.0"))
+# Max product pages opened per run to read the bank-offer ("Buy at") price of sale listings.
+MAX_SALE_DETAIL_PAGES = int(os.getenv("MAX_SALE_DETAIL_PAGES", "25"))
 MAX_RETRIES = int(os.getenv("MAX_RETRIES", "2"))
 
 # Background refresh interval for the web app.

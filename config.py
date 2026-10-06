@@ -29,6 +29,11 @@ REFRESH_INTERVAL_MINUTES = int(os.getenv("REFRESH_INTERVAL_MINUTES", "2"))
 # Comma separated list to enable a subset, e.g. "amazon,flipkart".
 ENABLED_STORES = [s.strip().lower() for s in os.getenv("ENABLED_STORES", "amazon,flipkart,reliance_digital,vijay_sales,poorvika").split(",") if s.strip()]
 
+# Optional Indian HTTP(S) proxy, e.g. http://user:pass@host:port. Only the stores in PROXY_STORES use it
+# (the ones that block datacenter IPs), which keeps proxy bandwidth low.
+PROXY_URL = os.getenv("PROXY_URL", "").strip()
+PROXY_STORES = [s.strip().lower() for s in os.getenv("PROXY_STORES", "amazon,reliance_digital").split(",") if s.strip()]
+
 # Use the OS certificate store (needed behind corporate TLS-inspecting proxies).
 USE_SYSTEM_CERTS = os.getenv("USE_SYSTEM_CERTS", "1") == "1"
 

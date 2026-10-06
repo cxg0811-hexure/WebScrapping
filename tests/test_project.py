@@ -108,6 +108,15 @@ def test_scrape_dedupes_and_filters(monkeypatch):
     assert len(out) == 1 and out[0].price == 80
 
 
+def test_proxy_only_for_listed_stores(monkeypatch):
+    monkeypatch.setattr(config, "PROXY_URL", "http://u:p@proxy.in:8000")
+    assert FlipkartScraper().session.proxies == {}
+    from scrapers.amazon import AmazonScraper
+    assert AmazonScraper().session.proxies["https"] == "http://u:p@proxy.in:8000"
+    monkeypatch.setattr(config, "PROXY_URL", "")
+    assert AmazonScraper().session.proxies == {}
+
+
 def test_flipkart_offer_price_parser():
     html = "<div>Big Billion Days Price</div><div>\u20b947,999</div><div>Buy at \u20b943,999</div><div>Buy at \u20b91,000</div>"
     assert parse_offer_price(html, 47999) == 43999

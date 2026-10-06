@@ -100,6 +100,8 @@ class BaseScraper(ABC):
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7",
             }
         )
+        if config.PROXY_URL and self.name in config.PROXY_STORES:
+            self.session.proxies.update({"http": config.PROXY_URL, "https": config.PROXY_URL})
         self.errors: list[str] = []
 
     def fetch(self, url: str, **kwargs) -> requests.Response | None:

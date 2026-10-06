@@ -85,6 +85,8 @@ Set these environment variables to override the defaults in `config.py`.
 | `ENABLED_STORES`           | `amazon,flipkart,reliance_digital,vijay_sales,poorvika` | Stores to scrape |
 | `USE_SYSTEM_CERTS`         | `1`                                | Use the Windows certificate store (needed behind corporate proxies) |
 | `MAX_SALE_DETAIL_PAGES`    | `25`                               | Flipkart sale product pages opened per run to read the bank-offer price |
+| `PROXY_URL`                | empty                              | Indian proxy, `http://user:pass@host:port` |
+| `PROXY_STORES`             | `amazon,reliance_digital`          | Stores that use the proxy             |
 
 ## Notes and limitations
 
@@ -142,3 +144,10 @@ One-time setup:
    `https://<user>.github.io/<repo>/`.
 
 To build the static site locally: `python run_scraper.py` then `python build_static.py`.
+
+### Indian proxy for Amazon and Reliance Digital
+
+GitHub's servers are blocked by Amazon.in and Reliance Digital. To fix this, add an
+Indian proxy: **Settings > Secrets and variables > Actions > New repository secret**,
+name `PROXY_URL`, value `http://user:pass@host:port`. Only the stores in `PROXY_STORES`
+use it, so bandwidth stays small. Without the secret the workflow runs as before.

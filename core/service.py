@@ -1,16 +1,14 @@
 # Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
-"""Runs all store scrapers in parallel and publishes the latest Excel/JSON."""
+"""Runs all store scrapers in parallel and publishes the latest JSON."""
 from __future__ import annotations
 
 import json
 import logging
-import shutil
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 import config
-from core.excel import build_workbook
 from scrapers import SCRAPERS
 
 log = logging.getLogger(__name__)
@@ -31,7 +29,6 @@ class ScrapeService:
             "last_updated": data.get("generated_at"),
             "total": len(data.get("products", [])),
             "stores": data.get("stores", {}),
-            "excel_available": config.LATEST_EXCEL.exists(),
             "last_error": self.last_error,
         }
 
@@ -95,20 +92,12 @@ class ScrapeService:
         products.sort(key=lambda p: (p["price"], p["name"]))
         payload = {"generated_at": generated_at.isoformat(timespec="seconds"), "stores": stores, "products": products}
 
-        build_workbook(products, config.LATEST_EXCEL, generated_at)
+        config.LATEST_JSON.parent.mkdir(parents=True, exist_ok=True)
         tmp_json = config.LATEST_JSON.with_suffix(".json.tmp")
         tmp_json.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
         tmp_json.replace(config.LATEST_JSON)
-        self._archive(generated_at)
-        log.info("Published %d products to %s", len(products), config.LATEST_EXCEL)
+        log.info("Published %d products to %s", len(products), config.LATEST_JSON)
         return payload
-
-    @staticmethod
-    def _archive(generated_at: datetime) -> None:
-        config.HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(config.LATEST_EXCEL, config.HISTORY_DIR / f"phone_prices_{generated_at:%Y%m%d_%H%M%S}.xlsx")
-        for old in sorted(config.HISTORY_DIR.glob("phone_prices_*.xlsx"))[: -config.HISTORY_KEEP]:
-            old.unlink(missing_ok=True)
 
 
 service = ScrapeService()

@@ -1,19 +1,17 @@
 # Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
-"""Web app: view latest phone prices and download the Excel report.
+"""Web app: view the latest phone prices.
 
 Run:  python -m uvicorn app:app --host 0.0.0.0 --port 8000
 """
 from __future__ import annotations
 
-import asyncio
 import logging
 from contextlib import asynccontextmanager
 from datetime import datetime
 
 from apscheduler.schedulers.background import BackgroundScheduler
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.concurrency import run_in_threadpool
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 import config
@@ -69,23 +67,3 @@ def products(store: str | None = None, category: str | None = None, q: str | Non
 def refresh():
     started = service.trigger_async()
     return {"started": started, "message": "Refresh started" if started else "Refresh already running"}
-
-
-@app.get("/download")
-async def download(fresh: bool = False):
-    """Download the latest Excel. With ?fresh=true a new scrape is run first."""
-    if fresh:
-        if service.running:
-            while service.running:
-                await asyncio.sleep(2)
-        else:
-            await run_in_threadpool(service.run)
-    if not config.LATEST_EXCEL.exists():
-        raise HTTPException(status_code=404, detail="Report not generated yet. Try again in a few minutes.")
-    stamp = datetime.fromtimestamp(config.LATEST_EXCEL.stat().st_mtime)
-    return FileResponse(
-        config.LATEST_EXCEL,
-        filename=f"phone_prices_{stamp:%Y%m%d_%H%M}.xlsx",
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        headers={"Cache-Control": "no-store"},
-    )

@@ -44,11 +44,8 @@
   <div class="actions">
     <span id="runningBadge" class="running" hidden><span class="spinner"></span>Scraping latest prices&hellip;</span>
 {% if static %}
-    <a id="downloadBtn" class="btn primary" href="phone_prices_latest.xlsx" download>&#11015; Download latest Excel</a>
     {% if repo_url %}<a class="btn secondary" href="{{ repo_url }}/actions/workflows/scrape.yml" target="_blank" rel="noopener" title="Open GitHub Actions and click 'Run workflow'">&#8635; Run now (GitHub)</a>{% endif %}
 {% else %}
-    <a id="downloadBtn" class="btn primary" href="/download">&#11015; Download latest Excel</a>
-    <button id="freshBtn" class="secondary" title="Scrape all stores now, then download">&#11015; Scrape &amp; download</button>
     <button id="refreshBtn" class="secondary">&#8635; Refresh now</button>
 {% endif %}
   </div>
@@ -152,7 +149,7 @@ async function pollStatus() {
       data = await (await fetch("phone_prices_latest.json?t=" + Date.now(), { cache: "no-store" })).json();
       const next = new Date(new Date(data.generated_at).getTime() + INTERVAL_MIN * 60000);
       s = { running: false, last_updated: data.generated_at, total: data.products.length, stores: data.stores,
-            next_run: next.toISOString(), excel_available: true, last_error: null };
+            next_run: next.toISOString(), last_error: null };
     } else {
       s = await (await fetch("/api/status", { cache: "no-store" })).json();
     }
@@ -164,18 +161,12 @@ async function pollStatus() {
     $("stores").replaceChildren(...Object.entries(s.stores || {}).map(([name, info]) =>
       el("div", `${name}: ${info.count}${info.errors.length ? " (" + info.errors.length + " warnings)" : ""}`)));
     $("errorBox").textContent = s.last_error || "";
-    $("downloadBtn").style.pointerEvents = s.excel_available ? "" : "none";
-    $("downloadBtn").style.opacity = s.excel_available ? "" : ".5";
     if (s.last_updated !== lastUpdated) { lastUpdated = s.last_updated; await loadProducts(data && data.products); }
   } catch (e) { $("errorBox").textContent = (STATIC ? "Could not load data: " : "Server unreachable: ") + e; }
 }
 
 if (!STATIC) {
   $("refreshBtn").onclick = async () => { await fetch("/api/refresh", { method: "POST" }); pollStatus(); };
-  $("freshBtn").onclick = () => {
-    $("runningBadge").hidden = false;
-    window.location.href = "/download?fresh=true";
-  };
 }
 ["search", "storeFilter", "categoryFilter", "saleFilter"].forEach(id => $(id).addEventListener("input", render));
 

@@ -5,8 +5,6 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", BASE_DIR / "output"))
-HISTORY_DIR = OUTPUT_DIR / "history"
-LATEST_EXCEL = OUTPUT_DIR / "phone_prices_latest.xlsx"
 LATEST_JSON = OUTPUT_DIR / "phone_prices_latest.json"
 
 # Search terms sent to every store; each term maps to a product category.
@@ -27,7 +25,6 @@ MAX_RETRIES = int(os.getenv("MAX_RETRIES", "2"))
 
 # Background refresh interval for the web app.
 REFRESH_INTERVAL_MINUTES = int(os.getenv("REFRESH_INTERVAL_MINUTES", "2"))
-HISTORY_KEEP = int(os.getenv("HISTORY_KEEP", "10"))
 
 # Comma separated list to enable a subset, e.g. "amazon,flipkart".
 ENABLED_STORES = [s.strip().lower() for s in os.getenv("ENABLED_STORES", "amazon,flipkart,reliance_digital,vijay_sales,poorvika").split(",") if s.strip()]

@@ -4,10 +4,7 @@ from datetime import datetime
 
 import pytest
 from fastapi.testclient import TestClient
-from openpyxl import load_workbook
-
 import config
-from core.excel import build_workbook
 from core.filters import categorize, is_target_phone, normalize_name
 from scrapers.base import Product, parse_price
 from scrapers.flipkart import FlipkartScraper, parse_offer_price
@@ -111,24 +108,6 @@ def test_scrape_dedupes_and_filters(monkeypatch):
     assert len(out) == 1 and out[0].price == 80
 
 
-def test_excel_sorted_ascending(tmp_path):
-    rows = [
-        Product("Apple iPhone 17", 90000, "A", "iPhone", "http://a", mrp=95000).to_dict(),
-        Product("Samsung Galaxy S25", 12000, "B", "Samsung", "http://b", sale_price=10000, sale_name="Sale").to_dict(),
-        Product("Google Pixel 9", 40000, "C", "Google Pixel", "http://c").to_dict(),
-    ]
-    path = build_workbook(rows, tmp_path / "t.xlsx", datetime.now())
-    ws = load_workbook(path)["All Phones"]
-    prices = [ws.cell(r, 5).value for r in range(2, ws.max_row + 1)]
-    assert prices == [12000, 40000, 90000]
-    assert ws.cell(1, 5).value == "Price (\u20b9)"
-    deals = load_workbook(path)["Sale Deals"]
-    assert deals.max_row == 2 and deals.cell(2, 2).value == "Samsung Galaxy S25" and deals.cell(2, 5).value == 10000
-    brand = load_workbook(path)["Samsung"]
-    headers = [brand.cell(1, c).value for c in range(1, brand.max_column + 1)]
-    assert brand.cell(2, headers.index("Sale Price (\u20b9)") + 1).value == 10000
-
-
 def test_flipkart_offer_price_parser():
     html = "<div>Big Billion Days Price</div><div>\u20b947,999</div><div>Buy at \u20b943,999</div><div>Buy at \u20b91,000</div>"
     assert parse_offer_price(html, 47999) == 43999
@@ -149,25 +128,40 @@ def test_flipkart_enrich_fetches_only_sale_items(monkeypatch):
 
 @pytest.fixture
 def client(tmp_path, monkeypatch):
-    monkeypatch.setattr(config, "LATEST_EXCEL", tmp_path / "latest.xlsx")
     monkeypatch.setattr(config, "LATEST_JSON", tmp_path / "latest.json")
     import app as app_module
     return TestClient(app_module.app)
 
 
-def test_download_404_when_no_report(client):
+def test_download_route_removed(client):
     assert client.get("/download").status_code == 404
+    assert "Download" not in client.get("/").text
 
 
-def test_download_and_api(client):
+def test_api_products_and_status(client):
     rows = [Product("Apple iPhone 17", 90000, "A", "iPhone", "http://a").to_dict()]
-    build_workbook(rows, config.LATEST_EXCEL, datetime.now())
     config.LATEST_JSON.write_text(json.dumps({"generated_at": "2026-01-01T00:00:00", "stores": {}, "products": rows}))
-    r = client.get("/download")
-    assert r.status_code == 200 and r.content[:2] == b"PK"
     assert client.get("/api/products", params={"q": "iphone"}).json()["count"] == 1
     assert client.get("/api/products", params={"store": "zzz"}).json()["count"] == 0
-    assert client.get("/api/status").json()["excel_available"] is True
+    assert client.get("/api/status").json()["total"] == 1
+
+
+def test_service_writes_json_only(tmp_path, monkeypatch):
+    from core.service import ScrapeService
+
+    class Fake:
+        display_name = "Fake"
+        def scrape_with_errors(self, queries, pages):
+            return [Product("Google Pixel 9", 50, "Fake", "Google Pixel", "u"),
+                    Product("Apple iPhone 17", 10, "Fake", "iPhone", "u")], []
+
+    monkeypatch.setattr(config, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(config, "LATEST_JSON", tmp_path / "latest.json")
+    monkeypatch.setattr(config, "ENABLED_STORES", ["fake"])
+    monkeypatch.setattr("core.service.SCRAPERS", {"fake": Fake})
+    out = ScrapeService().run()
+    assert [p["price"] for p in out["products"]] == [10, 50]
+    assert [f.name for f in tmp_path.iterdir()] == ["latest.json"]
 
 
 def test_sale_discount():

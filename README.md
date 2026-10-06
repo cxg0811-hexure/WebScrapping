@@ -1,15 +1,14 @@
 ---
 title: Phone Price Tracker
-description: Scrapes iPhone, Samsung and Pixel prices from Indian e-commerce sites, exports a sorted Excel report, and serves it from a live web page
-ms.date: 2026-10-05
+description: Scrapes iPhone, Samsung and Pixel prices from Indian e-commerce sites and shows them, sorted by price, on a live web page
+ms.date: 2026-10-06
 ---
 
 ## Overview
 
 This project scrapes phone prices (iPhone, Samsung Galaxy, and Google Pixel) from Indian e-commerce stores. It then:
 
-* Writes an Excel workbook sorted by price in ascending order.
-* Serves a web page that shows live prices and lets you download the latest Excel.
+* Serves a web page that shows live prices sorted by price in ascending order.
 * Refreshes the data automatically every 2 minutes (configurable).
 
 ## Supported stores
@@ -48,11 +47,9 @@ new data arrives.
 
 | Button               | Action                                                      |
 |----------------------|-------------------------------------------------------------|
-| Download latest Excel | Downloads the most recent report immediately               |
-| Scrape & download    | Runs a new scrape across all stores, then downloads it      |
 | Refresh now          | Starts a background scrape; the page updates when it ends   |
 
-Run a single scrape without the web server:
+Run a single scrape without the web server (writes `output/phone_prices_latest.json`):
 
 ```powershell
 # Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
@@ -72,20 +69,9 @@ On Windows you can also double-click `start.bat` to install dependencies and sta
 
 | Method | Path                     | Description                                         |
 |--------|--------------------------|-----------------------------------------------------|
-| GET    | `/download`              | Latest Excel file; add `?fresh=true` to scrape first |
 | GET    | `/api/products`          | JSON list; optional `store`, `category`, `q` filters |
 | GET    | `/api/status`            | Last update time, counts per store, next run         |
 | POST   | `/api/refresh`           | Start a background scrape                            |
-
-## Excel report
-
-The file is written to `output/phone_prices_latest.xlsx`. The last 10 reports are
-kept in `output/history/`. Sheets:
-
-* **Summary**: cheapest product per category.
-* **All Phones**: every listing sorted by price, with MRP, discount, sale price, bank-offer price, store, and link.
-* **Sale Deals**: only listings with a sale price (for example Big Billion Days), sorted by sale price.
-* **One sheet per category**: sorted by price.
 
 ## Configuration
 
@@ -98,7 +84,6 @@ Set these environment variables to override the defaults in `config.py`.
 | `REQUEST_DELAY`            | `2.0`                              | Seconds between requests to one store |
 | `ENABLED_STORES`           | `amazon,flipkart,reliance_digital,vijay_sales,poorvika` | Stores to scrape |
 | `USE_SYSTEM_CERTS`         | `1`                                | Use the Windows certificate store (needed behind corporate proxies) |
-| `HISTORY_KEEP`             | `20`                               | Number of archived reports to keep    |
 | `MAX_SALE_DETAIL_PAGES`    | `25`                               | Flipkart sale product pages opened per run to read the bank-offer price |
 
 ## Notes and limitations
@@ -146,7 +131,7 @@ copy of the page with `build_static.py`, and publishes it to GitHub Pages:
 
 * Runs every 10 minutes (GitHub can delay scheduled runs at busy times), on every
   push to `main`, and on demand from **Actions > Scrape prices and publish > Run workflow**.
-* If a run collects no products, it fails and the previous report stays online.
+* If a run collects no products, it fails and the previous data stays online.
 * The page polls the published JSON every minute and shows new data automatically.
 
 One-time setup:

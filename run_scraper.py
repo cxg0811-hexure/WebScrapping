@@ -17,4 +17,4 @@ if __name__ == "__main__":
         sys.exit(1)
     for store, info in result["stores"].items():
         print(f"{store:<18} {info['count']:>4} products  errors={len(info['errors'])}")
-    print(f"Total: {len(result['products'])} -> {config.LATEST_EXCEL}")
+    print(f"Total: {len(result['products'])} -> {config.LATEST_JSON}")

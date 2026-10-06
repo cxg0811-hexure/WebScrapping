@@ -63,6 +63,30 @@ class ScrapeService:
             self.running = False
             self._lock.release()
 
+    @staticmethod
+    def _merge_local(products: list[dict], stores: dict) -> None:
+        """Fill stores that returned nothing (blocked from this network) from data pushed by a home PC."""
+        path = config.LOCAL_STORES_FILE
+        if not path or not path.exists():
+            return
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            age = datetime.now() - datetime.fromisoformat(data["generated_at"])
+        except (OSError, ValueError, KeyError):
+            log.exception("Could not read %s", path)
+            return
+        if age.total_seconds() > config.LOCAL_STORES_MAX_AGE_MIN * 60:
+            log.warning("Ignoring stale %s (%s old)", path.name, age)
+            return
+        for name, info in data.get("stores", {}).items():
+            if stores.get(name, {}).get("count"):
+                continue
+            items = [p for p in data.get("products", []) if p["store"] == name]
+            products.extend(items)
+            note = f"from home PC, scraped {data['generated_at']}"
+            stores[name] = {"count": len(items), "errors": info.get("errors", [])[:9] + [note]}
+            log.info("Merged %d %s products from %s", len(items), name, path.name)
+
     def _run(self) -> dict:
         enabled = {k: v for k, v in SCRAPERS.items() if k in config.ENABLED_STORES}
         products, stores = [], {}
@@ -81,6 +105,7 @@ class ScrapeService:
                 stores[cls.display_name] = {"count": len(items), "errors": errors[:10]}
 
         generated_at = datetime.now()
+        self._merge_local(products, stores)
         if not products:
             previous = self.load_latest()
             if previous.get("products"):

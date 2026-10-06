@@ -29,6 +29,11 @@ REFRESH_INTERVAL_MINUTES = int(os.getenv("REFRESH_INTERVAL_MINUTES", "2"))
 # Comma separated list to enable a subset, e.g. "amazon,flipkart".
 ENABLED_STORES = [s.strip().lower() for s in os.getenv("ENABLED_STORES", "amazon,flipkart,reliance_digital,vijay_sales,poorvika").split(",") if s.strip()]
 
+# Optional file of products scraped from another network (home PC), merged for stores that return nothing.
+_local_file = os.getenv("LOCAL_STORES_FILE", str(BASE_DIR / "data" / "local_stores.json"))
+LOCAL_STORES_FILE = Path(_local_file) if _local_file else None  # empty string disables merging
+LOCAL_STORES_MAX_AGE_MIN = int(os.getenv("LOCAL_STORES_MAX_AGE_MIN", "180"))
+
 # Optional Indian HTTP(S) proxy, e.g. http://user:pass@host:port. Only the stores in PROXY_STORES use it
 # (the ones that block datacenter IPs), which keeps proxy bandwidth low.
 PROXY_URL = os.getenv("PROXY_URL", "").strip()

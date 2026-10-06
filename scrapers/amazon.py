@@ -1,4 +1,4 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
 from __future__ import annotations
 
 import re
@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from core.filters import normalize_name
 from scrapers.base import BaseScraper, Product, parse_price
 
-_BRANDS = {"apple", "samsung", "google"}
+_BRANDS = {"apple", "samsung"}
 _DEAL_RE = re.compile(r"(great indian festival|limited time deal|deal of the day|lightning deal|prime day|blockbuster deal)", re.I)
 
 

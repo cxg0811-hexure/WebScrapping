@@ -1,4 +1,4 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
 from __future__ import annotations
 
 import time
@@ -21,7 +21,7 @@ class PoorvikaScraper(BaseScraper):
         body = {
             "searches": [{
                 "collection": "productsnew",
-                "q": {"iPhone": "iphone", "Samsung": "galaxy", "Google Pixel": "pixel"}.get(category, query),
+                "q": {"iPhone": "iphone", "Samsung": "galaxy"}.get(category, query),
                 "num_typos": 1,
                 "query_by": "name,categories,item_code,sku",
                 "query_by_weights": "4,3,2,1",

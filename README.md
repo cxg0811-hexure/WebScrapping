@@ -1,12 +1,12 @@
 ---
 title: Phone Price Tracker
-description: Scrapes iPhone, Samsung and Pixel prices from Indian e-commerce sites and shows them, sorted by price, on a live web page
+description: Scrapes iPhone and Samsung prices from Indian e-commerce sites and shows them, sorted by price, on a live web page
 ms.date: 2026-10-06
 ---
 
 ## Overview
 
-This project scrapes phone prices (iPhone, Samsung Galaxy, and Google Pixel) from Indian e-commerce stores. It then:
+This project scrapes phone prices (iPhone and Samsung Galaxy) from Indian e-commerce stores. It then:
 
 * Serves a web page that shows live prices sorted by price in ascending order.
 * Refreshes the data automatically every 2 minutes (configurable).

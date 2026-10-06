@@ -33,7 +33,7 @@ def test_parse_price(text, expected):
 @pytest.mark.parametrize("title,ok", [
     ("Apple iPhone 17 256GB", True),
     ("Samsung Galaxy S25 Ultra 5G (256GB)", True),
-    ("Google Pixel 9 Pro (128GB)", True),
+    ("Google Pixel 9 Pro (128GB)", False),
     ("Samsung Galaxy Watch 7", False),
     ("Google Pixel Buds Pro", False),
     ("Samsung Galaxy Tab S9", False),
@@ -48,7 +48,7 @@ def test_genuine_filter(title, ok):
 
 def test_categorize_and_normalize():
     assert categorize("Samsung Galaxy S25", "x") == "Samsung"
-    assert categorize("Google Pixel 9", "x") == "Google Pixel"
+    assert categorize("Google Pixel 9", "x") == "x"
     assert categorize("Apple iPhone 17", "x") == "iPhone"
     assert normalize_name("Apple iPhone Air\u200b: 13-inch with M3 chip") == "Apple iPhone Air"
 
@@ -129,8 +129,8 @@ def test_flipkart_enrich_fetches_only_sale_items(monkeypatch):
     calls = []
     monkeypatch.setattr(s, "fetch", lambda url, **k: calls.append(url) or FakeResponse(text="<p>Buy at \u20b990</p>"))
     monkeypatch.setattr(s, "polite_pause", lambda: None)
-    sale = Product("Google Pixel 10a", 100, "Flipkart", "Google Pixel", "http://sale", sale_price=100, sale_name="Big Billion Days")
-    plain = Product("Google Pixel 9", 100, "Flipkart", "Google Pixel", "http://plain")
+    sale = Product("Samsung Galaxy A36", 100, "Flipkart", "Samsung", "http://sale", sale_price=100, sale_name="Big Billion Days")
+    plain = Product("Samsung Galaxy A06", 100, "Flipkart", "Samsung", "http://plain")
     s.enrich([sale, plain])
     assert calls == ["http://sale"] and sale.offer_price == 90 and plain.offer_price is None
 
@@ -161,7 +161,7 @@ def test_service_writes_json_only(tmp_path, monkeypatch):
     class Fake:
         display_name = "Fake"
         def scrape_with_errors(self, queries, pages):
-            return [Product("Google Pixel 9", 50, "Fake", "Google Pixel", "u"),
+            return [Product("Samsung Galaxy S25", 50, "Fake", "Samsung", "u"),
                     Product("Apple iPhone 17", 10, "Fake", "iPhone", "u")], []
 
     monkeypatch.setattr(config, "OUTPUT_DIR", tmp_path)

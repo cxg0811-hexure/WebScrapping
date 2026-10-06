@@ -1,4 +1,4 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
 from __future__ import annotations
 
 from typing import Iterable
@@ -30,7 +30,7 @@ class RelianceDigitalScraper(BaseScraper):
             return
         for item in data.get("items", []):
             brand = (item.get("brand") or {}).get("name", "")
-            if brand.lower() not in ("apple", "samsung", "google") or not item.get("sellable", True):
+            if brand.lower() not in ("apple", "samsung") or not item.get("sellable", True):
                 continue
             price_info = item.get("price") or {}
             price = (price_info.get("effective") or {}).get("min")

@@ -1,4 +1,4 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
 from __future__ import annotations
 
 from datetime import datetime
@@ -35,7 +35,7 @@ class VijaySalesScraper(BaseScraper):
         for item in products:
             brand = item.get("brand") or []
             brand = brand[0] if isinstance(brand, list) and brand else brand
-            if str(brand).lower() not in ("apple", "samsung", "google"):
+            if str(brand).lower() not in ("apple", "samsung"):
                 continue
             if str(item.get("cityId_1_status_unx_ts", "Available")).lower() != "available":
                 continue

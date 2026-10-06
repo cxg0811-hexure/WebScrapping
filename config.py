@@ -1,4 +1,4 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
 """Central configuration. Values can be overridden with environment variables."""
 import os
 from pathlib import Path
@@ -11,9 +11,8 @@ LATEST_JSON = OUTPUT_DIR / "phone_prices_latest.json"
 SEARCH_QUERIES = {
     "iPhone": "apple iphone",
     "Samsung": "samsung galaxy smartphone",
-    "Google Pixel": "google pixel smartphone",
 }
-BRAND_BY_CATEGORY = {"iPhone": "Apple", "Samsung": "Samsung", "Google Pixel": "Google"}
+BRAND_BY_CATEGORY = {"iPhone": "Apple", "Samsung": "Samsung"}
 
 PAGES_PER_QUERY = int(os.getenv("PAGES_PER_QUERY", "2"))
 REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "25"))

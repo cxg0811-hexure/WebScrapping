@@ -1,14 +1,13 @@
-﻿# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
-"""Heuristics that keep genuine iPhone / Samsung Galaxy / Google Pixel phones and drop accessories."""
+# Generated with GitHub Copilot - [Tracking ID: Hexure-Copilot]
+"""Heuristics that keep genuine iPhone / Samsung Galaxy phones and drop accessories."""
 import re
 
-CATEGORIES = ("iPhone", "Samsung", "Google Pixel")
+CATEGORIES = ("iPhone", "Samsung")
 
 # Category -> (title prefix required, extra keyword required)
 _BRAND_RULES = {
     "iPhone": ("apple", "iphone"),
     "Samsung": ("samsung", "galaxy"),
-    "Google Pixel": ("google", "pixel"),
 }
 
 EXCLUDE_PATTERNS = re.compile(

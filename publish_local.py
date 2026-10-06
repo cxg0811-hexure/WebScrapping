@@ -37,9 +37,24 @@ def main() -> int:
     if not result or not result.get("products"):
         print(f"Nothing scraped: {service.last_error}")
         return 1
+    previous = json.loads(TARGET.read_text(encoding="utf-8")) if TARGET.exists() else {}
+    now = result["generated_at"]
+    stores, products = {}, []
+    for name, info in result["stores"].items():
+        if info["count"]:
+            stores[name] = {**info, "scraped_at": now}
+            products += [p for p in result["products"] if p["store"] == name]
+        elif previous.get("stores", {}).get(name, {}).get("count"):
+            # Keep the last good data for a store that is blocked right now; it keeps its own timestamp.
+            old = previous["stores"][name]
+            stores[name] = {**old, "errors": (info["errors"] + old.get("errors", []))[:10]}
+            products += [p for p in previous["products"] if p["store"] == name]
+        else:
+            stores[name] = {**info, "scraped_at": now}
+    payload = {"generated_at": now, "stores": stores, "products": products}
     TARGET.parent.mkdir(exist_ok=True)
-    TARGET.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
-    print({k: v["count"] for k, v in result["stores"].items()})
+    TARGET.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    print({k: v["count"] for k, v in stores.items()})
     if "--no-push" in sys.argv:
         return 0
 

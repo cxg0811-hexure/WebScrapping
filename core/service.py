@@ -71,19 +71,25 @@ class ScrapeService:
             return
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
-            age = datetime.now() - datetime.fromisoformat(data["generated_at"])
-        except (OSError, ValueError, KeyError):
+        except (OSError, ValueError):
             log.exception("Could not read %s", path)
-            return
-        if age.total_seconds() > config.LOCAL_STORES_MAX_AGE_MIN * 60:
-            log.warning("Ignoring stale %s (%s old)", path.name, age)
             return
         for name, info in data.get("stores", {}).items():
             if stores.get(name, {}).get("count"):
                 continue
+            scraped = info.get("scraped_at") or data.get("generated_at", "")
+            try:
+                age = datetime.now() - datetime.fromisoformat(scraped)
+            except ValueError:
+                continue
+            if age.total_seconds() > config.LOCAL_STORES_MAX_AGE_MIN * 60:
+                log.warning("Ignoring stale %s data (%s old)", name, age)
+                continue
             items = [p for p in data.get("products", []) if p["store"] == name]
+            if not items:
+                continue
             products.extend(items)
-            note = f"from home PC, scraped {data['generated_at']}"
+            note = f"from home PC, scraped {scraped}"
             stores[name] = {"count": len(items), "errors": info.get("errors", [])[:9] + [note]}
             log.info("Merged %d %s products from %s", len(items), name, path.name)
 

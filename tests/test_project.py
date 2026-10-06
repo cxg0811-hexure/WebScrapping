@@ -166,31 +166,11 @@ def test_service_writes_json_only(tmp_path, monkeypatch):
 
     monkeypatch.setattr(config, "OUTPUT_DIR", tmp_path)
     monkeypatch.setattr(config, "LATEST_JSON", tmp_path / "latest.json")
-    monkeypatch.setattr(config, "LOCAL_STORES_FILE", None)
     monkeypatch.setattr(config, "ENABLED_STORES", ["fake"])
     monkeypatch.setattr("core.service.SCRAPERS", {"fake": Fake})
     out = ScrapeService().run()
     assert [p["price"] for p in out["products"]] == [10, 50]
     assert [f.name for f in tmp_path.iterdir()] == ["latest.json"]
-
-
-def test_merge_local_fills_only_empty_fresh_stores(tmp_path, monkeypatch):
-    from core.service import ScrapeService
-    f = tmp_path / "local.json"
-    amazon = Product("Apple iPhone 17", 90, "Amazon.in", "iPhone", "u").to_dict()
-    flip = Product("Apple iPhone 17", 80, "Flipkart", "iPhone", "u").to_dict()
-    def write(ts):
-        f.write_text(json.dumps({"generated_at": ts, "stores": {"Amazon.in": {"count": 1, "errors": []}, "Flipkart": {"count": 1, "errors": []}},
-                                 "products": [amazon, flip]}))
-    monkeypatch.setattr(config, "LOCAL_STORES_FILE", f)
-    write(datetime.now().isoformat())
-    products, stores = [], {"Amazon.in": {"count": 0, "errors": []}, "Flipkart": {"count": 5, "errors": []}}
-    ScrapeService._merge_local(products, stores)
-    assert [p["store"] for p in products] == ["Amazon.in"] and stores["Amazon.in"]["count"] == 1
-    write("2020-01-01T00:00:00")
-    products = []
-    ScrapeService._merge_local(products, {"Amazon.in": {"count": 0, "errors": []}})
-    assert products == []
 
 
 def test_sale_discount():

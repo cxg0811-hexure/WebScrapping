@@ -145,19 +145,9 @@ One-time setup:
 
 To build the static site locally: `python run_scraper.py` then `python build_static.py`.
 
-### Amazon and Reliance Digital from your own PC (free)
+### Amazon.in and Reliance Digital
 
-GitHub's servers are blocked by Amazon.in and Reliance Digital, but your PC is not.
-`publish_local.py` scrapes those two stores from your PC and pushes
-`data/local_stores.json`. The GitHub workflow merges it into the site whenever those
-stores return nothing, and ignores it when older than 3 hours (`LOCAL_STORES_MAX_AGE_MIN`).
-
-Run `powershell -File install_local_task.ps1` once to schedule it every 10 minutes.
-It needs the PC to be on and logged in; if it is off, those two stores go blank after 3 hours.
-
-### Indian proxy (optional, paid)
-
-GitHub's servers are blocked by Amazon.in and Reliance Digital. To fix this, add an
-Indian proxy: **Settings > Secrets and variables > Actions > New repository secret**,
+GitHub's servers are often blocked by Amazon.in and Reliance Digital, so those stores may show no listings online.
+The other three stores are unaffected. To bring them back you need an Indian proxy: **Settings > Secrets and variables > Actions > New repository secret**,
 name `PROXY_URL`, value `http://user:pass@host:port`. Only the stores in `PROXY_STORES`
 use it, so bandwidth stays small. Without the secret the workflow runs as before.
